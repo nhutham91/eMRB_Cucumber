@@ -1,0 +1,645 @@
+<html class="k-webkit k-webkit89"><head>
+    <title>:: eMRB - Projects ::</title>
+
+
+    <link href="/Content/img/common/toolbar_icon.png" id="favicon" rel="shortcut icon" type="image/x-icon">
+    <script src="/Scripts/jquery-1.8.0.min.js"></script>
+
+    <script src="/Scripts/jquery-ui.min.js"></script>
+
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="/Scripts/jquery.validate.js"></script>
+
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script src="/Content/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <script src="/Scripts/jquery-framedialog-1.1.2.1.js"></script>
+<script src="/Scripts/common/jQueryFixes.js"></script>
+
+    <script src="/Scripts/file-upload/jquery.fileupload.js"></script>
+<script src="/Scripts/file-upload/jquery.fileupload-ui.js"></script>
+<script src="/Scripts/file-upload/jquery.iframe-transport.js"></script>
+
+    <link href="/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/Content/themes/base/minified/jquery-ui.min.css" rel="stylesheet">
+
+    <link href="/Content/themes/base/minified/jquery.ui.dialog.min.css" rel="stylesheet">
+
+    <link href="/Content/css/style.min.css" rel="stylesheet">
+<link href="/Content/css/headers/header1.css" rel="stylesheet">
+<link href="/Content/css/style_responsive.css" rel="stylesheet">
+<link href="/Content/plugins/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="/Content/css/themes/headers/header1-black.css" rel="stylesheet">
+<link href="/Content/css/themes/black.css" rel="stylesheet">
+<link href="/Content/css/emrb-custom-blue-red-style.css" rel="stylesheet">
+<link href="/Content/css/emrb-style-1.css" rel="stylesheet">
+<link href="/Content/css/common.min.css" rel="stylesheet">
+<link href="/Content/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/Content/css/clearable-input.css" rel="stylesheet">
+
+    <script src="/Scripts/common/date.format.js"></script>
+<script src="/Scripts/grid/common-utils.js"></script>
+<script src="/Scripts/grid/dialog-utils.js"></script>
+<script src="/Scripts/common/private-site-common.js"></script>
+<script src="/Scripts/common/clearable-input.js"></script>
+
+    <script src="/Scripts/pdfjs-dist/pageviewer.js"></script>
+    <script src="/Scripts/pdfjs-dist/build/pdf.min.js"></script>
+    <script src="/Scripts/kendo/kendo.custom.min.js"></script>
+    
+    <script src="/Scripts/resource/eMRB.culture.en-US.min.js"></script>
+    <script src="/Scripts/kendo/cultures/kendo.culture.en-US.min.js"></script>
+    <script src="/Scripts/jsnlog.min.js"></script>
+
+    <script type="text/javascript">
+//<![CDATA[
+var __jsnlog_configure = function (JL) {
+JL.setOptions({"clientIP": "27.74.244.43:65475, 27.74.244.43",
+"requestId": "8000028b-0000-3a00-b63f-84710c7967bb",
+"enabled": true,
+"maxMessages": 2147483647});
+}; try { __jsnlog_configure(JL); } catch(e) {};
+//]]>
+</script>
+<script type="text/javascript" src="/Scripts/jsnlog.min.js"></script>
+
+
+    <link href="/Content/kendo/kendo.material.min.css" rel="stylesheet">
+<link href="/Content/kendo/kendo.common-material.min.css" rel="stylesheet">
+
+    <script>
+        $.ajaxSetup({
+            statusCode: {
+                401: function () {
+                    window.location.href = "/Account/LogIn";
+                }
+            }
+        });
+    </script>
+    <style>
+        .centeredOverlay {
+            position: absolute;
+            background-color: rgba(197, 197, 197, 0.3);
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: black;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #set-active-project-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 36px;
+            color: darkgray;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="container main-content">
+            <ul class="loginbar pull-right">
+                    Welcome <strong>duong</strong>!
+    <span>
+        <a title="Your Profile" class="none-decoration" href="/Account/YourProfile">
+            <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/1.png">
+        </a>
+    </span>
+    <span>
+        <a title="Change Password" class="none-decoration" href="/Account/ChangePassword">
+            <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/2.png">
+        </a>
+    </span>
+    <span>
+        <a title="Log out" class="none-decoration" href="/Account/LogOff">
+            <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/3.png">
+        </a>
+    </span>
+    <style>
+        a.none-decoration:link {
+            text-decoration: none;
+        }
+    </style>
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="header">
+        <div class="container main-content">
+            <div class="logo">
+                <a href="/Project">
+                    <img alt="Logo" width="150" src="/Content/img/eMRB_logo-min.png" id="logo-header">
+                </a>
+            </div>
+            <div class="navbar">
+                <div class="navbar-inner">
+<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</a>
+<div class="nav-collapse collapse">
+  <ul class="nav top-2">
+        <li id="menu-dashboard">
+          <a href="/Dashboard">Dashboard</a>
+          <b class="caret-out"></b>
+        </li>
+        <li id="menu-edocsetup">
+          <a href="/eDocSetup">eDoc Setup</a>
+          <b class="caret-out"></b>
+        </li>
+        <li id="menu-document">
+          <a href="/Document/Project">Project</a>
+          <b class="caret-out"></b>
+        </li>
+      <li id="menu-admin" class="active">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administration <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <iframe src="about:blank" scrolling="no" style="border: currentColor; border-image: none; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: -1;"></iframe>
+            <li id="sub-menu-project-index" class="active"><a href="/Project">Projects</a></li>
+            <li id="sub-menu-po-index"><a href="/PO">PO</a></li>
+            <li id="sub-menu-section-index"><a href="/Section">MRB</a></li>
+            <li id="sub-menu-frontpage-index"><a href="/FrontPage">Front Page and Variable Settings</a></li>
+            <li id="sub-menu-metadata-index"><a href="/MetaData">MetaData</a></li>
+            <li id="sub-menu-setting-index"><a href="/Setting">System Configurations</a></li>
+            <li id="sub-menu-supplier-index"><a href="/Supplier">Suppliers</a></li>
+            <li id="sub-menu-user-index"><a href="/User">Users</a></li>
+            <li id="sub-menu-user-rolelist"><a href="/User/RoleList">Roles</a></li>
+        </ul>
+        <b class="caret-out"></b>
+      </li>
+  </ul>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    SetActiveTopMenu('index', 'Project');
+  });
+
+  function SetActiveTopMenu(action, controller) {
+    $("ul.nav > li").removeClass("active");
+
+    var controllerName = controller.toLowerCase();
+    var actionName = action.toLowerCase();
+    
+    //special case
+    if (controllerName == "user" && actionName == "editrole") {
+      var $m = $("#sub-menu-user-rolelist");
+      $m.addClass("active");
+      $m.closest("ul").closest("li").addClass("active");
+      return;
+    }
+    
+    switch (controllerName) {
+      default:
+        var $menu = $("#sub-menu-" + controllerName + "-" + actionName);
+        if ($menu.length <= 0) {
+          if ($("#sub-menu-" + controllerName + "-index").length > 0) {
+            $("#sub-menu-" + controllerName + "-index").addClass("active");
+            $("#sub-menu-" + controllerName + "-index").closest("ul").closest("li").addClass("active");
+          }
+          else{
+            $("#menu-" + controllerName).addClass("active");
+          }
+        }
+        else {
+          $menu.addClass("active");
+          $menu.closest("ul").closest("li").addClass("active");
+        }
+        break;
+    }
+  }
+</script>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div class="breadcrumbs margin-bottom-20">
+            <div class="container main-content ">
+                <div class="row-fluid">
+                    <div class="span7 margin-top-10">
+                        <h4>Projects</h4>
+                    </div>
+                    <div class="span5">
+                        <div class="float-right" style="margin-right: 5px;" id="OfflineHelp" title="Open help documents">
+
+  <div><a onclick="showPopUp()" href="javascript:void(0)">
+           <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/5.png">
+      </a></div>
+<div id="showDialog" hidden="">
+     <div class="row">
+      <div class="span3 screen-name">Project</div>
+    </div>
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/Create A New Project-Generic.pdf');" href="javascript:void(0)">1. How to create a new project</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/Create A New Project-Generic.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/Create A New Project-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/How to change active Project-End User.pdf');" href="javascript:void(0)">2. How to Change Active Project</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/How to change active Project-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/How to change active Project-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+     <div class="row">
+      <div class="span3 screen-name">Edit Project</div>
+    </div>
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/Edit and add supplier for Project-End User.pdf');" href="javascript:void(0)">1. How to Edit Project Information</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/Edit and add supplier for Project-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/Edit and add supplier for Project-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/How To Add Maintain List Of Suppliers-End User.pdf');" href="javascript:void(0)">2. How to Add/Maintain List of Suppliers</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/How To Add Maintain List Of Suppliers-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/How To Add Maintain List Of Suppliers-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+     <div class="row">
+      <div class="span3 screen-name">Project Permission</div>
+    </div>
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/How To Pick A Role Member-End User.pdf');" href="javascript:void(0)">1. How to pick a role member</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/How To Pick A Role Member-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/How To Pick A Role Member-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+    <div class="pad-top-10">
+      <a class="btn-u" onclick="openViewAll()">View All</a>
+    </div>
+</div>
+
+<script>
+
+  function showPopUp() {
+    var _title = "Setup project permission";
+    $("#showDialog").dialog({
+      title: _title, width: 'auto', height: 'auto',
+      autoOpen: true,
+      bgiframe: true,
+      modal: true,
+      position: { my: "right top", at: "right+15px bottom+47px", of: "#OfflineHelp" },
+      open: function () {
+              jQuery('.ui-widget-overlay').bind('click', function () {
+                jQuery('#showDialog').dialog('close');
+              })
+            }
+    });
+    $('.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable').append("<iframe src='about:blank' style='width:100%; height:100%; border:none; background-color:rgba(251, 251, 251, 1); position:absolute; top: 0px; left:0px; z-index:-1' scrolling='no' ></iframe>");
+  }
+
+  function openVideo(e) {
+    top.consoleRef = window.open(e, 'SecondScreen');
+    top.consoleRef.document.close();
+    setTimeout(function () {
+      top.consoleRef.focus();
+    }, 400);
+  }
+
+  function openPdf(url) {
+    top.consoleRef = window.open(url, 'SecondScreen'); //, "directories=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=0,resizable=no");//", width=" + $(document).width() + ",height=" + $(document).height());
+    top.consoleRef.document.writeln('<html><head style="text-align:left"><title style="text-align:left">:: eMRB - OfflineHelp</title></head>'
+      + '<body style="width: 100%; height:100%" bgcolor=white ">' + '<iframe src="' + url + '" style="width: 100%; height:100%; border:none;"></iframe>'
+      + '</body></html>');
+    top.consoleRef.document.close();
+    setTimeout(function () {
+      top.consoleRef.focus();
+    }, 400);
+  }
+
+  function openViewAll() {
+    window.open('/OfflineHelp/ViewAll', "SecondScreen");
+  }
+
+</script>
+
+<style>
+  .screen-name {
+  overflow: hidden;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #999;
+  }
+  .row {
+    padding-top: 10px;
+  }
+
+  .float-left {
+    float: left;
+  }
+
+  .pad-top-10 {
+    padding-top: 10px;
+  }
+</style>
+
+
+                        </div>
+                        <div class="float-right" style="margin-right: 10px;">
+                            <a title="Back to previous page" href="javascript:history.back()">
+                                <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/4.png">
+                            </a>
+                        </div>
+
+                        <div class="clear-all float-right w100">
+                                    <div class="" id="active-pro">
+            <div class="doc-version float-right hidden" style="margin-top: 5px; display: none;">
+                <a id="setActiveProject" title="Set Active Project" class="btn-u">Set active Project</a>
+            </div>
+
+
+            <div class="span3 float-right" id="activepro-info">
+                <input id="uxActiveProjectId" type="hidden" value="0">
+                    <span>Active project</span>
+                        <a href="/Project"><span class="info" style="color:#08c!important;"></span> </a>
+
+            </div>
+
+
+        </div>
+        <div class="" id="user-sub-menu" style="display: none;"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#user-sub-menu").hide();
+        $("#setActiveProject").on("click", function () {
+            $("#user-sub-menu").load(GetURLAppIIS("Project", "/RenderSetActiveProjectView"), function () {
+                $("#user-sub-menu").show();
+                $("#active-pro").hide();
+            });
+        });
+
+        //try to check active project & supplier information.
+        validateUserActiveProject();
+        ComboboxOpen("UserActiveProjectId");
+
+    });
+    function RefreshActiveProjectAfterDeleted(deletedId) {
+        if ($("#uxActiveProjectId").val() == deletedId) {
+            setActiveProject(true, "", null);
+        }
+    }
+
+    function onCancelSetActiveProject() {
+        $("#user-sub-menu").hide();
+        $("#active-pro").show();
+    }
+
+    function setActiveProject(isCountManager, projectId, supplierId) {
+        Feedback.ShowLoader();
+        return $.ajax({
+            type: 'POST',
+            url: GetURLAppIIS("User", "/SetActiveProject"),
+            dataType: 'json',
+            data: { proId: projectId, supplierId: supplierId, isCount: isCountManager },
+            success: function (response) {
+                if (!response.IsError) {
+                    $("#user-sub-menu").hide();
+                    $("#active-pro").show();
+                    var html = response.Data.ProjectNo;
+                    if (parseInt(response.Data.ProjectId) > 0)
+                        html = '<a href="/Project/Edit?projectId=' + response.Data.ProjectId + '">' + response.Data.ProjectNo + '</a>';
+
+                    $("#activepro-info").find("span.info").html(html);
+                    $("#uxActiveProjectId").val(response.Data.ProjectId);
+                } else {
+                    Feedback.ShowError(response.Object);
+                }
+                console.log("Done set active project: " + response.Data.ProjectNo);
+
+                Feedback.HideLoader();
+            },
+            error: function () { Feedback.HideLoader(); }
+        });
+    };
+
+    function onSetActiveProject(isCountManager) {
+        setActiveProject(isCountManager, $("#UserActiveProjectId").val(), null);
+    }
+
+
+
+    function validateUserActiveProject() {
+        $.ajax({
+            type: 'POST',
+            url: GetURLAppIIS("User", "/ValidateUserActiveProject"),
+            dataType: 'json',
+            success: function (response) {
+                if (!response.IsError && response.Data.Success) {
+                    var html = response.Data.ProjectNo;
+
+                    if (parseInt(response.Data.ProjectId) > 0)
+                        html = '<a href="/Project/Edit?projectId=' + response.Data.ProjectId + '">' + response.Data.ProjectNo + '</a>';
+
+                    $("#activepro-info").find("span.info").html(html);
+                    $("#uxActiveProjectId").val(response.Data.ProjectId);
+                    console.log("IN validateUserActiveProject:" + response.Data.ProjectId);
+
+                    CheckActiveProjectToDisablePage();
+                }
+            },
+            error: function () { Feedback.HideLoader(); }
+        });
+    }
+
+    var currentDlg;
+    function ShowDialogSupplier(id) {
+        if (id == '00000000-0000-0000-0000-000000000000') {
+            Feedback.ShowError("Not active supplier.");
+            return;
+        }
+
+        currentDlg = new IFrameDialog({
+            url: "/Supplier/Edit?id=" + id,
+            title: dialogMRB.SUPPLIER,
+            buttons: Buttons.None,
+            width: 800,
+            height: 620
+        });
+    };
+
+    function DataboundActiveProjectCB() {
+        if ($('#UserActiveProjectId').data('kendoComboBox').text() === "0") {
+            $('#UserActiveProjectId').data('kendoComboBox').text("");
+        }
+        $("input[name=UserActiveProjectId_input]").attr("style", "width:100%; height:24px; color:#555");
+    };
+
+</script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="container margin-bottom-50 main-content body-content">
+        <div class="centeredOverlay"><div id="set-active-project-text"><a href="/Project">Please set Active Project</a></div></div>
+        <div class="row-fluid">
+            <div id="errorPanel" class="alert alert-error error-panel">
+                <button class="close" type="button">×</button>
+                <ul></ul>
+            </div>
+            <div class="alert alert-success info-panel">
+                <button type="button" class="close">×</button>
+                <ul></ul>
+            </div>
+            <div class="loading-panel">
+                <div class="k-loading-image"></div>
+                <div class="loading-status" id="loading-message">Loading....</div>
+            </div>
+            
+
+<link href="/Content/css/page/project.css" rel="stylesheet">
+<form action="/Project/Search" class="search-box" defaultbutton="Search" haveconfirm="0" id="projects" method="get">    <div id="searchCriteria" class="form-group">
+        <ul>
+            <li>
+                <div><label for="Keyword">Filter By Keyword</label></div>
+                <div><input class="form-control criteria eq clearable x" id="Keyword" name="Keyword" type="text" value="" autocomplete="off"></div>
+            </li>
+            <li>
+                <div>&nbsp;</div>
+                <div>
+                    <input type="button" id="Search" value="Search" tabindex="4" class="btn-u" title="Search" style="display:none;">
+                </div>
+            </li>
+        </ul>
+    </div>
+</form><div class="clear-all margin-bottom-10 margin-top-5">
+    <div class="k-widget k-grid" id="projectGrid" data-role="grid" style=""><div class="k-header k-grid-toolbar k-grid-top"><a class="k-button k-button-icontext " href="javascript:void(0)" id="addNewProject" title="Add new project"><span></span>Add New</a><a class="k-button k-button-icontext " href="javascript:void(0)" id="deleteAllProject" title="Delete this project"><span></span>Delete</a><a class="k-button k-button-icontext " href="javascript:void(0)" id="expandAllGrid" title="Expand all modules on grid"><span></span>Expand all</a><a class="k-button k-button-icontext " href="javascript:void(0)" id="collapseAllGrid" title="Collapse all modules on grid"><span></span>Collapse all</a><a class="k-button k-button-icontext " href="javascript:void(0)" id="RecoverPermanentProject" title="Recover Project Or Permanent Delete Project"><span></span>Recover / Permanent Delete</a></div><div class="k-grid-header" style="padding-right: 17px;"><div class="k-grid-header-wrap"><table role="grid"><colgroup><col class="k-hierarchy-col"><col style="width:30px"><col style="width:200px"><col style="width:300px"><col style="width:150px"><col style="width:200px"><col style="width:200px"><col style="width:140px"><col style="width:130px"></colgroup><thead role="rowgroup"><tr role="row"><th class="k-hierarchy-cell k-header">&nbsp;</th><th class="k-header" data-field="IsChecked" data-index="0" data-title="Select" scope="col" style="text-align:center"><input type="checkbox" id="chkSelectAll" onclick="checkAll(this)"></th><th class="k-header" data-field="ProjectNo" data-index="1" data-title="Project No." scope="col"><span class="k-link">Project No.</span></th><th class="k-header" data-field="ProductName" data-index="2" data-title="Project Name" scope="col"><span class="k-link">Project Name</span></th><th class="k-header" data-field="UnitNo" data-index="3" data-title="Serial No." scope="col"><span class="k-link">Serial No.</span></th><th class="k-header" data-field="OrderNo" data-index="4" data-title="Purchase Order No." scope="col"><span class="k-link">Purchase Order No.</span></th><th class="k-header" data-field="FabricationSpec" data-index="5" data-title="Fabrication Specification" scope="col"><span class="k-link">Fabrication Specification</span></th><th class="k-header" data-field="FinalMRBObjectId" data-index="6" data-title="" scope="col"><span class="k-link">&nbsp;</span></th><th class="k-header" data-field="ProjectId" data-index="7" data-title="" scope="col"><span class="k-link">&nbsp;</span></th></tr></thead></table></div></div><div class="k-grid-content" style="height: 563px;"><table role="treegrid"><colgroup><col class="k-hierarchy-col"><col style="width:30px"><col style="width:200px"><col style="width:300px"><col style="width:150px"><col style="width:200px"><col style="width:200px"><col style="width:140px"><col style="width:130px"></colgroup><tbody role="rowgroup"><tr class="k-master-row" data-uid="0d497e3b-5f1a-4a9c-a38e-90f3bfcb5a98" role="row"><td class="k-hierarchy-cell"><a class="k-plus" href="#" tabindex="-1"></a></td><td style="text-align: center" role="gridcell"><input type="checkbox" id="946" class="chkbx" onclick="checkItem(this)"></td><td role="gridcell"><a href="javascript:void(0)" onclick="ProjectClient.SetActiveProject('946');" title="TestProject2"><div>TestProject2<span class="lock-false"></span></div></a></td><td role="gridcell">Test project 2</td><td role="gridcell">123456</td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"></td><td role="gridcell"><a class="actionIcon" href="javascript:window.location.href = GetURLAppIIS('Project','/Edit?projectId=946')" title="Edit this project"><img width="18" height="18" src="/Content/img/new-icons/14.png" class="imgCommandItem hover-auto1"></a><a class="actionIcon" href="javascript:void(0)" onclick="ProjectClient.DeleteProject('946');" title="Delete this project"><img width="18" height="18" src="/Content/img/new-icons/15.png" class="imgCommandItem hover-auto1"></a><a class="actionIcon" href="javascript:window.location.href = GetURLAppIIS('Project','/Permission?projectId=946')" title="Set project permission"><img width="18" height="18" src="/Content/img/new-icons/permission.png" class="imgCommandItem hover-auto1"></a><a class="actionActiveIcon" href="javascript:void(0)" onclick="ProjectClient.SetActiveProject('946');" title="Set this project to active project."><img width="18" height="18" src="/Content/img/new-icons/setactivepj.png" class="imgCommandItem hover-auto1"></a></td></tr></tbody></table></div><div class="k-pager-wrap k-grid-pager k-widget" data-role="pager"><a class="k-link k-pager-nav k-state-disabled k-pager-first" data-page="1" href="#" title="Go to the first page" tabindex="-1"><span class="k-icon k-i-seek-w">seek-w</span></a><a class="k-link k-pager-nav k-state-disabled" data-page="1" href="#" title="Go to the previous page" tabindex="-1"><span class="k-icon k-i-arrow-w">arrow-w</span></a><ul class="k-pager-numbers k-reset"><li class="k-current-page"><span class="k-link k-pager-nav">1</span></li><li><span class="k-state-selected">1</span></li></ul><a class="k-link k-pager-nav k-state-disabled" data-page="1" href="#" title="Go to the next page" tabindex="-1"><span class="k-icon k-i-arrow-e">arrow-e</span></a><a class="k-link k-pager-nav k-pager-last k-state-disabled" data-page="1" href="#" title="Go to the last page" tabindex="-1"><span class="k-icon k-i-seek-e">seek-e</span></a><span class="k-pager-info k-label">1 - 1 of 1 item(s)</span></div></div><script>
+	jQuery(function(){jQuery("#projectGrid").kendoGrid({"dataBound":ProjectClient.DataBound,"columns":[{"title":"Select","attributes":{"style":"text-align: center"},"width":"30px","template":"\u003cinput type=\u0027checkbox\u0027 id=\u0027#=ProjectId#\u0027 #=IsChecked ? checked=\u0027checked\u0027:\u0027\u0027 # class=\u0027chkbx\u0027 onclick=\u0027checkItem(this)\u0027/\u003e","field":"IsChecked","sortable":false,"encoded":true},{"title":"Project No.","width":"200px","template":"\u003ca href=\"javascript:void(0)\" onclick=\"ProjectClient.SetActiveProject(\u0027#=ProjectId#\u0027);\"  title=\"#=ProjectNo#\"\u003e\u003cdiv\u003e#=ProjectNo#\u003cspan class=\u0027lock-#=IsLock#\u0027\u003e\u003c/span\u003e\u003c/div\u003e\u003c/a\u003e","field":"ProjectNo","encoded":true},{"title":"Project Name","width":"300px","field":"ProductName","encoded":true},{"title":"Serial No.","width":"150px","field":"UnitNo","encoded":true},{"title":"Purchase Order No.","width":"200px","field":"OrderNo","encoded":true},{"title":"Fabrication Specification","width":"200px","field":"FabricationSpec","encoded":true},{"width":"140px","template":"#if(FinalMRBObjectId != null \u0026\u0026 FinalMRBObjectId!= \u002700000000-0000-0000-0000-000000000000\u0027){# \u003ca href=\"javascript:void(0)\" data-id=\u0027#=FinalMRBObjectId#\u0027 title=\u0027Show information and history of final MRB\u0027 onclick=\"MRB.ShowFinalMRB(\u0027#=ProjectId#\u0027);\"\u003eView Final MRB\u003c/a\u003e#}#","field":"FinalMRBObjectId","encoded":true},{"width":"130px","template":"\u003ca class=\u0027actionIcon\u0027 href=\"javascript:window.location.href = GetURLAppIIS(\u0027Project\u0027,\u0027/Edit?projectId=#=ProjectId#\u0027)\" title=\u0027Edit this project\u0027\u003e\u003cimg width=\u002718\u0027 height=\u002718\u0027 src=\u0027/Content/img/new-icons/14.png\u0027 class=\u0027imgCommandItem hover-auto1\u0027\u003e\u003c/a\u003e\u003ca class=\u0027actionIcon\u0027 href=\"javascript:void(0)\" onclick=\"ProjectClient.DeleteProject(\u0027#=ProjectId#\u0027);\" title=\u0027Delete this project\u0027\u003e\u003cimg width=\u002718\u0027 height=\u002718\u0027 src=\u0027/Content/img/new-icons/15.png\u0027 class=\u0027imgCommandItem hover-auto1\u0027\u003e\u003c/a\u003e\u003ca class=\u0027actionIcon\u0027 href=\"javascript:window.location.href = GetURLAppIIS(\u0027Project\u0027,\u0027/Permission?projectId=#=ProjectId#\u0027)\" title=\u0027Set project permission\u0027\u003e\u003cimg width=\u002718\u0027 height=\u002718\u0027 src=\u0027/Content/img/new-icons/permission.png\u0027 class=\u0027imgCommandItem hover-auto1\u0027\u003e\u003c/a\u003e\u003ca class=\u0027actionActiveIcon\u0027 href=\"javascript:void(0)\" onclick=\"ProjectClient.SetActiveProject(\u0027#=ProjectId#\u0027);\"    title=\u0027Set this project to active project.\u0027\u003e\u003cimg width=\u002718\u0027 height=\u002718\u0027 src=\u0027/Content/img/new-icons/setactivepj.png\u0027 class=\u0027imgCommandItem hover-auto1\u0027\u003e\u003c/a\u003e","field":"ProjectId","encoded":true}],"pageable":{"buttonCount":10,"messages":{"display":"{0} - {1} of {2} item(s)"}},"toolbar":{"command":[{"name":null,"attr":" id=\"addNewProject\" title=\"Add\u0026#32;new\u0026#32;project\" href=\"javascript:void(0)\"","buttonType":"ImageAndText","text":"Add New"},{"name":null,"attr":" id=\"deleteAllProject\" title=\"Delete\u0026#32;this\u0026#32;project\" href=\"javascript:void(0)\"","buttonType":"ImageAndText","text":"Delete"},{"name":null,"attr":" id=\"expandAllGrid\" title=\"Expand\u0026#32;all\u0026#32;modules\u0026#32;on\u0026#32;grid\" href=\"javascript:void(0)\"","buttonType":"ImageAndText","text":"Expand all"},{"name":null,"attr":" id=\"collapseAllGrid\" title=\"Collapse\u0026#32;all\u0026#32;modules\u0026#32;on\u0026#32;grid\" href=\"javascript:void(0)\"","buttonType":"ImageAndText","text":"Collapse all"},{"name":null,"attr":" id=\"RecoverPermanentProject\" title=\"Recover\u0026#32;Project\u0026#32;Or\u0026#32;Permanent\u0026#32;Delete\u0026#32;Project\" href=\"javascript:void(0)\"","buttonType":"ImageAndText","text":"Recover / Permanent Delete"}]},"messages":{"noRecords":"No records available."},"dataSource":{"type":(function(){if(kendo.data.transports['aspnetmvc-ajax']){return 'aspnetmvc-ajax';} else{throw new Error('The kendo.aspnetmvc.min.js script is not included.');}})(),"transport":{"read":{"url":"/Project/GetAllProjectList","data":collectAdditionalData,"type":"GET"},"prefix":""},"pageSize":30,"page":1,"total":0,"schema":{"data":"Data","total":"Total","errors":"Errors","model":{"id":"ProjectId","fields":{"ProjectId":{"type":"number"},"ProjectNo":{"type":"string"},"OrderNo":{"type":"string"},"FabricationSpec":{"type":"string"},"OrderFileDocId":{"type":"number","defaultValue":null},"TopDrawingId":{"type":"string","defaultValue":null},"TopDrawingNo":{"type":"string"},"CreationBy":{"type":"string","defaultValue":null},"CreationDate":{"type":"date","defaultValue":null},"DocumentTypes":{"type":"object"},"OrderFileName":{"type":"string"},"FinalMRBObjectId":{"type":"string","defaultValue":null},"NDTReportColumnConfigs":{"type":"string"},"IsLock":{"type":"boolean"},"MachineTypeId":{"type":"number","defaultValue":null},"MachineTypeName":{"type":"string"},"DeliveryDate":{"type":"date","defaultValue":null},"ProductName":{"type":"string"},"ClientName":{"type":"string"},"RevisionNo":{"type":"string"},"UnitNo":{"type":"string"},"OriginalProjectId":{"type":"number","defaultValue":null},"IsLatest":{"type":"boolean","defaultValue":null},"UnitOrQuantity":{"type":"number"},"ApprovalText":{"type":"string"},"EnableSignatureApproval":{"type":"boolean","defaultValue":null},"IncludeSupplierInfoToMRB":{"type":"boolean","defaultValue":null},"HasModule":{"type":"boolean","defaultValue":null},"ProjectRevNo":{"editable":false,"type":"string"},"MRBSecurePassword":{"type":"string"},"FrontPageHeadingText":{"type":"string"},"TableOfContentHeadingText":{"type":"string"},"MRBStatus":{"type":"number","defaultValue":null},"RequestedTime":{"type":"date","defaultValue":null},"RequestedBy":{"type":"string","defaultValue":null},"RequestedByName":{"type":"string"},"GeneratedTime":{"type":"date","defaultValue":null},"MRBPartCount":{"type":"number","defaultValue":null},"IsChecked":{"type":"boolean"},"BookmarkSyntax":{"type":"string"},"IsDeleted":{"type":"boolean","defaultValue":null},"DeletedDate":{"type":"date","defaultValue":null},"BOMTemplateId":{"type":"string","defaultValue":null},"PageNumberSetting":{"type":"string"}}}}},"detailTemplate":kendo.template(jQuery('#template').html())});});
+</script>
+</div>
+
+<script id="template" type="text/kendo-tmpl">
+    <div class="k-widget k-grid" id="moduleGrid_#=ProjectId#"><table><colgroup><col /><col style="width:261px" /></colgroup><thead class="k-grid-header"><tr><th class="k-header" data-field="Name" data-index="0" data-title="Module Name" scope="col"><span class="k-link">Module Name</span></th><th class="k-header" data-aggregates="max" data-field="Level" data-index="1" data-title="" scope="col"><span class="k-link"> </span></th></tr></thead><tbody><tr class="k-no-data"><td colspan="2"></td></tr></tbody></table></div><script>
+	jQuery(function(){jQuery("\#moduleGrid_#=ProjectId#").kendoGrid({"dataBound":ProjectClient.ModuleLevelDataBound,"columns":[{"title":"Module Name","field":"Name","encoded":true},{"width":"261px","field":"Level","encoded":true,"aggregates":["max"]}],"scrollable":false,"messages":{"noRecords":"No records available."},"dataSource":{"type":(function(){if(kendo.data.transports['aspnetmvc-ajax']){return 'aspnetmvc-ajax';} else{throw new Error('The kendo.aspnetmvc.min.js script is not included.');}})(),"transport":{"read":{"url":"/Document/GetModule?proId=#=ProjectId#","type":"GET"},"prefix":""},"pageSize":1000,"page":1,"total":0,"aggregate":[{"field":"Level","aggregate":"max"}],"schema":{"data":"Data","total":"Total","errors":"Errors","model":{"id":"SectionId","fields":{"SectionId":{"type":"string"},"Name":{"type":"string"},"Description":{"type":"string"},"ParentId":{"type":"string","defaultValue":null},"Order":{"type":"number","defaultValue":null},"ProjectId":{"type":"number"},"Level":{"type":"number"},"ParentCount":{"type":"number"},"SectionItemCount":{"type":"number","defaultValue":null},"PageCount":{"type":"number"},"AllowEmptyDoc":{"type":"boolean"},"IsModule":{"type":"boolean"},"IsMainModule":{"type":"boolean"},"ApplicableType":{"type":"number","defaultValue":null},"Path":{"type":"string"},"ApplicableTypeName":{"editable":false,"type":"string"},"Type":{"type":"string"},"IsLock":{"type":"boolean"},"MRBStatus":{"type":"number","defaultValue":null},"RequestedTime":{"type":"date","defaultValue":null},"RequestedBy":{"type":"string","defaultValue":null},"RequestedByName":{"type":"string"},"GeneratedTime":{"type":"date","defaultValue":null},"MRBPartCount":{"type":"number","defaultValue":null},"ModuleId":{"type":"string","defaultValue":null},"CanGenerateMRB":{"editable":false,"type":"boolean"},"MRBStatusName":{"editable":false,"type":"string"},"RequestedTimeString":{"editable":false,"type":"string"},"GeneratedTimeString":{"editable":false,"type":"string"},"IsCalculated":{"type":"boolean"},"Exclude":{"type":"boolean","defaultValue":null},"PageIndex":{"type":"number"}}}}},"rowTemplate":"\u003ctr class=\u0027k-master-row Sub_\\#:Level\\#\u0027 sectionId=\u0027\\#:SectionId\\#\u0027 isModule=\u0027\\#:IsModule\\#\u0027 id=\u0027uploadDoc\\#:IsModule\\#\u0027 sectionNo=\u0027\\#:Name\\#\u0027 sectionDescription=\u0027\\#:Description\\#\u0027 data-uid=\u0027\\#: uid \\#\u0027\u003e\u003ctd class=\u0027k-hierarchy-cell\u0027 \u003e\\#while(Level \u003e= 1) {\\#\\#if(Level == 1){\\#\\#} else {\\#\u003cspan style=\u0027padding-left:10px\u0027\u003e\u003c/span\u003e\\#} Level-- }\\#\\#if(IsModule){\\#\u003cspan class=\u0027module\u0027\u003e\u003c/span\u003e\\#:Name\\# \\#} else {\\#\\#:Name\\#\u003cspan style=\u0027padding-left:10px\u0027\u003e\u003c/span\u003e\u003ca class=\u0027uploadDoc\u0027 href=\u0027javascript:UploadSecDoc(\"\\#:SectionId\\#\",\"\\#:Name\\#\",\"\\#:Description\\#\")\u0027 title=\u0027Upload a document\u0027\u003eAdd Document\u003c/a\u003e\\#}\\#\\#if(Description!=null \u0026\u0026 Description !=\u0027\u0027){\\#- \\#: Description \\# \\#}\\#\u003c/td\u003e\u003ctd role=\u0027gridcell\u0027\u003e\\#if(MRBStatus == 3){\\#\u003ca href=\u0027javascript:void(0)\u0027 class=\u0027approve\u0027  title=\u0027Show information and history of final MRB\u0027 onclick=\u0027showModuleFinalMRB(\"#=ProjectId#\",\"\\#:SectionId\\#\");\u0027\u003eView MRB\u003c/a\u003e\\#}\\#\u003c/td\u003e\u003c/tr\u003e"});});
+<\/script>
+</script>
+
+<script type="text/javascript">
+
+    var expand = false;
+    var delayTime = 2000;
+    var projectId = '0';
+    var canDeleteAndRecover = 'True';
+    var inactiveIcon = "/Content/img/common/grid/icon-inactive.png";
+    var setActiveIcon = "/Content/img/new-icons/setactivepj.png";
+    var firstLoad = true;
+
+</script>
+<script src="/Scripts/pages/document.js"></script>
+<script src="/Scripts/pages/project.js"></script>
+<script src="/Scripts/pages/project-index.js"></script>
+
+        </div>
+    </div>
+
+    <div class="copyright">
+        <iframe src="about:blank" scrolling="no" style="border: currentColor; border-image: none; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: 1;"></iframe>
+        <div class="container  main-content" style="position: relative; z-index: 99999;">
+            <div class="row-fluid">
+                <div class="span8">
+                    <p>
+                        eMRB<sup>®</sup> v1.3.1.1187 © Copyright CodeIT AS 2021.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<style>
+    #red-color-template {
+        background: #EC3825;
+        color: #EC3825;
+    }
+
+    #blue-color-template {
+        background: #08A6AC;
+        color: #08A6AC;
+    }
+
+    #logo-header {
+        height: auto;
+    }
+
+    .copyright > a {
+        color: #fff !important;
+    }
+
+    .ui-widget-overlay {
+        position: fixed !important; /* Sit on top of the page content */
+        width: 100% !important; /* Full width (cover the whole page) */
+        height: 100% !important; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#red-color-template").click(function () {
+            $("link[href='/Content/css/emrb-custom-blue-red-style.css']").removeAttr("href").attr("href", "/Content/css/emrb-custom-red-style.css");
+        });
+
+        $("#blue-color-template").click(function () {
+
+            $("link[href='/Content/css/emrb-custom-red-style.css']").removeAttr("href").attr("href", "/Content/css/emrb-custom-blue-red-style.css");
+        });
+    });
+
+    function CheckActiveProjectToDisablePage() {
+        var controller = "project";
+        console.log(controller);
+        if (controller != "project") {
+            var activeProjectId = $("#uxActiveProjectId").val();
+            setTimeout(function () {
+                if (activeProjectId === 0 || activeProjectId === "0" || activeProjectId == "") {
+                    $(".main-content").css("position", "relative");
+                    $(".centeredOverlay").show();
+                }
+                else {
+                    $(".main-content").css("position", "");
+                    $(".centeredOverlay").hide();
+                }
+            }, 500);
+        }
+    }
+</script></body></html>

@@ -1,0 +1,986 @@
+<html class="k-webkit k-webkit89"><head>
+    <title>:: eMRB - Create New Project ::</title>
+
+
+    <link href="/Content/img/common/toolbar_icon.png" id="favicon" rel="shortcut icon" type="image/x-icon">
+    <script src="/Scripts/jquery-1.8.0.min.js"></script>
+
+    <script src="/Scripts/jquery-ui.min.js"></script>
+
+    <script src="/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="/Scripts/jquery.validate.js"></script>
+
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script src="/Content/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <script src="/Scripts/jquery-framedialog-1.1.2.1.js"></script>
+<script src="/Scripts/common/jQueryFixes.js"></script>
+
+    <script src="/Scripts/file-upload/jquery.fileupload.js"></script>
+<script src="/Scripts/file-upload/jquery.fileupload-ui.js"></script>
+<script src="/Scripts/file-upload/jquery.iframe-transport.js"></script>
+
+    <link href="/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/Content/themes/base/minified/jquery-ui.min.css" rel="stylesheet">
+
+    <link href="/Content/themes/base/minified/jquery.ui.dialog.min.css" rel="stylesheet">
+
+    <link href="/Content/css/style.min.css" rel="stylesheet">
+<link href="/Content/css/headers/header1.css" rel="stylesheet">
+<link href="/Content/css/style_responsive.css" rel="stylesheet">
+<link href="/Content/plugins/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="/Content/css/themes/headers/header1-black.css" rel="stylesheet">
+<link href="/Content/css/themes/black.css" rel="stylesheet">
+<link href="/Content/css/emrb-custom-blue-red-style.css" rel="stylesheet">
+<link href="/Content/css/emrb-style-1.css" rel="stylesheet">
+<link href="/Content/css/common.min.css" rel="stylesheet">
+<link href="/Content/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/Content/css/clearable-input.css" rel="stylesheet">
+
+    <script src="/Scripts/common/date.format.js"></script>
+<script src="/Scripts/grid/common-utils.js"></script>
+<script src="/Scripts/grid/dialog-utils.js"></script>
+<script src="/Scripts/common/private-site-common.js"></script>
+<script src="/Scripts/common/clearable-input.js"></script>
+
+    <script src="/Scripts/pdfjs-dist/pageviewer.js"></script>
+    <script src="/Scripts/pdfjs-dist/build/pdf.min.js"></script>
+    <script src="/Scripts/kendo/kendo.custom.min.js"></script>
+    
+    <script src="/Scripts/resource/eMRB.culture.en-US.min.js"></script>
+    <script src="/Scripts/kendo/cultures/kendo.culture.en-US.min.js"></script>
+    <script src="/Scripts/jsnlog.min.js"></script>
+
+    <script type="text/javascript">
+//<![CDATA[
+var __jsnlog_configure = function (JL) {
+JL.setOptions({"clientIP": "27.74.244.43:51276, 27.74.244.43",
+"requestId": "80000b8c-0000-b200-b63f-84710c7967bb",
+"enabled": true,
+"maxMessages": 2147483647});
+}; try { __jsnlog_configure(JL); } catch(e) {};
+//]]>
+</script>
+<script type="text/javascript" src="/Scripts/jsnlog.min.js"></script>
+
+
+    <link href="/Content/kendo/kendo.material.min.css" rel="stylesheet">
+<link href="/Content/kendo/kendo.common-material.min.css" rel="stylesheet">
+
+    <script>
+        $.ajaxSetup({
+            statusCode: {
+                401: function () {
+                    window.location.href = "/Account/LogIn";
+                }
+            }
+        });
+    </script>
+    <style>
+        .centeredOverlay {
+            position: absolute;
+            background-color: rgba(197, 197, 197, 0.3);
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: black;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #set-active-project-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 36px;
+            color: darkgray;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="container main-content">
+            <ul class="loginbar pull-right">
+                    Welcome <strong>duong</strong>!
+    <span>
+        <a title="Your Profile" class="none-decoration" href="/Account/YourProfile">
+            <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/1.png">
+        </a>
+    </span>
+    <span>
+        <a title="Change Password" class="none-decoration" href="/Account/ChangePassword">
+            <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/2.png">
+        </a>
+    </span>
+    <span>
+        <a title="Log out" class="none-decoration" href="/Account/LogOff">
+            <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/3.png">
+        </a>
+    </span>
+    <style>
+        a.none-decoration:link {
+            text-decoration: none;
+        }
+    </style>
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="header">
+        <div class="container main-content">
+            <div class="logo">
+                <a href="/Project">
+                    <img alt="Logo" width="150" src="/Content/img/eMRB_logo-min.png" id="logo-header">
+                </a>
+            </div>
+            <div class="navbar">
+                <div class="navbar-inner">
+<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</a>
+<div class="nav-collapse collapse">
+  <ul class="nav top-2">
+        <li id="menu-dashboard">
+          <a href="/Dashboard">Dashboard</a>
+          <b class="caret-out"></b>
+        </li>
+        <li id="menu-edocsetup">
+          <a href="/eDocSetup">eDoc Setup</a>
+          <b class="caret-out"></b>
+        </li>
+        <li id="menu-document">
+          <a href="/Document/Project">Project</a>
+          <b class="caret-out"></b>
+        </li>
+      <li id="menu-admin" class="active">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administration <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <iframe src="about:blank" scrolling="no" style="border: currentColor; border-image: none; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: -1;"></iframe>
+            <li id="sub-menu-project-index" class="active"><a href="/Project">Projects</a></li>
+            <li id="sub-menu-po-index"><a href="/PO">PO</a></li>
+            <li id="sub-menu-section-index"><a href="/Section">MRB</a></li>
+            <li id="sub-menu-frontpage-index"><a href="/FrontPage">Front Page and Variable Settings</a></li>
+            <li id="sub-menu-metadata-index"><a href="/MetaData">MetaData</a></li>
+            <li id="sub-menu-setting-index"><a href="/Setting">System Configurations</a></li>
+            <li id="sub-menu-supplier-index"><a href="/Supplier">Suppliers</a></li>
+            <li id="sub-menu-user-index"><a href="/User">Users</a></li>
+            <li id="sub-menu-user-rolelist"><a href="/User/RoleList">Roles</a></li>
+        </ul>
+        <b class="caret-out"></b>
+      </li>
+  </ul>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    SetActiveTopMenu('edit', 'Project');
+  });
+
+  function SetActiveTopMenu(action, controller) {
+    $("ul.nav > li").removeClass("active");
+
+    var controllerName = controller.toLowerCase();
+    var actionName = action.toLowerCase();
+    
+    //special case
+    if (controllerName == "user" && actionName == "editrole") {
+      var $m = $("#sub-menu-user-rolelist");
+      $m.addClass("active");
+      $m.closest("ul").closest("li").addClass("active");
+      return;
+    }
+    
+    switch (controllerName) {
+      default:
+        var $menu = $("#sub-menu-" + controllerName + "-" + actionName);
+        if ($menu.length <= 0) {
+          if ($("#sub-menu-" + controllerName + "-index").length > 0) {
+            $("#sub-menu-" + controllerName + "-index").addClass("active");
+            $("#sub-menu-" + controllerName + "-index").closest("ul").closest("li").addClass("active");
+          }
+          else{
+            $("#menu-" + controllerName).addClass("active");
+          }
+        }
+        else {
+          $menu.addClass("active");
+          $menu.closest("ul").closest("li").addClass("active");
+        }
+        break;
+    }
+  }
+</script>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div class="breadcrumbs margin-bottom-20">
+            <div class="container main-content ">
+                <div class="row-fluid">
+                    <div class="span7 margin-top-10">
+                        <h4><a href="/Project" title="Projects">Projects</a> / Project Information</h4>
+                    </div>
+                    <div class="span5">
+                        <div class="float-right" style="margin-right: 5px;" id="OfflineHelp" title="Open help documents">
+
+  <div><a onclick="showPopUp()" href="javascript:void(0)">
+           <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/5.png">
+      </a></div>
+<div id="showDialog" hidden="">
+     <div class="row">
+      <div class="span3 screen-name">Project</div>
+    </div>
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/Create A New Project-Generic.pdf');" href="javascript:void(0)">1. How to create a new project</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/Create A New Project-Generic.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/Create A New Project-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/How to change active Project-End User.pdf');" href="javascript:void(0)">2. How to Change Active Project</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/How to change active Project-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/How to change active Project-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+     <div class="row">
+      <div class="span3 screen-name">Edit Project</div>
+    </div>
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/Edit and add supplier for Project-End User.pdf');" href="javascript:void(0)">1. How to Edit Project Information</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/Edit and add supplier for Project-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/Edit and add supplier for Project-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/How To Add Maintain List Of Suppliers-End User.pdf');" href="javascript:void(0)">2. How to Add/Maintain List of Suppliers</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/How To Add Maintain List Of Suppliers-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/How To Add Maintain List Of Suppliers-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+     <div class="row">
+      <div class="span3 screen-name">Project Permission</div>
+    </div>
+    <div class="row">
+      <div class="span3"><a onclick="openPdf('/Content/offlineHelp/Project/How To Pick A Role Member-End User.pdf');" href="javascript:void(0)">1. How to pick a role member</a></div>
+      <div class="float-left">
+        <a onclick="openPdf('/Content/offlineHelp/Project/How To Pick A Role Member-End User.pdf');" href="javascript:void(0)">
+          <img src="/Content/img/icons/pdf.ico" width="15" height="15"></a>
+        <a onclick="openVideo('/Content/offlineHelp/Project/How To Pick A Role Member-DemoSim.htm');" href="javascript:void(0)">
+          <img src="/Content/img/icons/video.ico" width="15" height="15"></a>
+      </div>
+    </div>      
+    <div class="pad-top-10">
+      <a class="btn-u" onclick="openViewAll()">View All</a>
+    </div>
+</div>
+
+<script>
+
+  function showPopUp() {
+    var _title = "Setup project permission";
+    $("#showDialog").dialog({
+      title: _title, width: 'auto', height: 'auto',
+      autoOpen: true,
+      bgiframe: true,
+      modal: true,
+      position: { my: "right top", at: "right+15px bottom+47px", of: "#OfflineHelp" },
+      open: function () {
+              jQuery('.ui-widget-overlay').bind('click', function () {
+                jQuery('#showDialog').dialog('close');
+              })
+            }
+    });
+    $('.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable').append("<iframe src='about:blank' style='width:100%; height:100%; border:none; background-color:rgba(251, 251, 251, 1); position:absolute; top: 0px; left:0px; z-index:-1' scrolling='no' ></iframe>");
+  }
+
+  function openVideo(e) {
+    top.consoleRef = window.open(e, 'SecondScreen');
+    top.consoleRef.document.close();
+    setTimeout(function () {
+      top.consoleRef.focus();
+    }, 400);
+  }
+
+  function openPdf(url) {
+    top.consoleRef = window.open(url, 'SecondScreen'); //, "directories=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=0,resizable=no");//", width=" + $(document).width() + ",height=" + $(document).height());
+    top.consoleRef.document.writeln('<html><head style="text-align:left"><title style="text-align:left">:: eMRB - OfflineHelp</title></head>'
+      + '<body style="width: 100%; height:100%" bgcolor=white ">' + '<iframe src="' + url + '" style="width: 100%; height:100%; border:none;"></iframe>'
+      + '</body></html>');
+    top.consoleRef.document.close();
+    setTimeout(function () {
+      top.consoleRef.focus();
+    }, 400);
+  }
+
+  function openViewAll() {
+    window.open('/OfflineHelp/ViewAll', "SecondScreen");
+  }
+
+</script>
+
+<style>
+  .screen-name {
+  overflow: hidden;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #999;
+  }
+  .row {
+    padding-top: 10px;
+  }
+
+  .float-left {
+    float: left;
+  }
+
+  .pad-top-10 {
+    padding-top: 10px;
+  }
+</style>
+
+
+                        </div>
+                        <div class="float-right" style="margin-right: 10px;">
+                            <a title="Back to previous page" href="javascript:history.back()">
+                                <img width="18" height="18" class="hover-auto" src="/Content/img/new-icons/4.png">
+                            </a>
+                        </div>
+
+                        <div class="clear-all float-right w100">
+                                    <div class="" id="active-pro">
+            <div class="doc-version float-right hidden" style="margin-top: 5px; display: none;">
+                <a id="setActiveProject" title="Set Active Project" class="btn-u">Set active Project</a>
+            </div>
+
+
+            <div class="span3 float-right" id="activepro-info">
+                <input id="uxActiveProjectId" type="hidden">
+                    <span>Active project</span>
+                        <a href="/Project"><span class="info" style="color:#08c!important;"> Not set </span> </a>
+
+            </div>
+
+
+        </div>
+        <div class="" id="user-sub-menu" style="display: none;"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#user-sub-menu").hide();
+        $("#setActiveProject").on("click", function () {
+            $("#user-sub-menu").load(GetURLAppIIS("Project", "/RenderSetActiveProjectView"), function () {
+                $("#user-sub-menu").show();
+                $("#active-pro").hide();
+            });
+        });
+
+        //try to check active project & supplier information.
+        validateUserActiveProject();
+        ComboboxOpen("UserActiveProjectId");
+
+    });
+    function RefreshActiveProjectAfterDeleted(deletedId) {
+        if ($("#uxActiveProjectId").val() == deletedId) {
+            setActiveProject(true, "", null);
+        }
+    }
+
+    function onCancelSetActiveProject() {
+        $("#user-sub-menu").hide();
+        $("#active-pro").show();
+    }
+
+    function setActiveProject(isCountManager, projectId, supplierId) {
+        Feedback.ShowLoader();
+        return $.ajax({
+            type: 'POST',
+            url: GetURLAppIIS("User", "/SetActiveProject"),
+            dataType: 'json',
+            data: { proId: projectId, supplierId: supplierId, isCount: isCountManager },
+            success: function (response) {
+                if (!response.IsError) {
+                    $("#user-sub-menu").hide();
+                    $("#active-pro").show();
+                    var html = response.Data.ProjectNo;
+                    if (parseInt(response.Data.ProjectId) > 0)
+                        html = '<a href="/Project/Edit?projectId=' + response.Data.ProjectId + '">' + response.Data.ProjectNo + '</a>';
+
+                    $("#activepro-info").find("span.info").html(html);
+                    $("#uxActiveProjectId").val(response.Data.ProjectId);
+                } else {
+                    Feedback.ShowError(response.Object);
+                }
+                console.log("Done set active project: " + response.Data.ProjectNo);
+
+                Feedback.HideLoader();
+            },
+            error: function () { Feedback.HideLoader(); }
+        });
+    };
+
+    function onSetActiveProject(isCountManager) {
+        setActiveProject(isCountManager, $("#UserActiveProjectId").val(), null);
+    }
+
+
+
+    function validateUserActiveProject() {
+        $.ajax({
+            type: 'POST',
+            url: GetURLAppIIS("User", "/ValidateUserActiveProject"),
+            dataType: 'json',
+            success: function (response) {
+                if (!response.IsError && response.Data.Success) {
+                    var html = response.Data.ProjectNo;
+
+                    if (parseInt(response.Data.ProjectId) > 0)
+                        html = '<a href="/Project/Edit?projectId=' + response.Data.ProjectId + '">' + response.Data.ProjectNo + '</a>';
+
+                    $("#activepro-info").find("span.info").html(html);
+                    $("#uxActiveProjectId").val(response.Data.ProjectId);
+                    console.log("IN validateUserActiveProject:" + response.Data.ProjectId);
+
+                    CheckActiveProjectToDisablePage();
+                }
+            },
+            error: function () { Feedback.HideLoader(); }
+        });
+    }
+
+    var currentDlg;
+    function ShowDialogSupplier(id) {
+        if (id == '00000000-0000-0000-0000-000000000000') {
+            Feedback.ShowError("Not active supplier.");
+            return;
+        }
+
+        currentDlg = new IFrameDialog({
+            url: "/Supplier/Edit?id=" + id,
+            title: dialogMRB.SUPPLIER,
+            buttons: Buttons.None,
+            width: 800,
+            height: 620
+        });
+    };
+
+    function DataboundActiveProjectCB() {
+        if ($('#UserActiveProjectId').data('kendoComboBox').text() === "0") {
+            $('#UserActiveProjectId').data('kendoComboBox').text("");
+        }
+        $("input[name=UserActiveProjectId_input]").attr("style", "width:100%; height:24px; color:#555");
+    };
+
+</script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="container margin-bottom-50 main-content body-content">
+        <div class="centeredOverlay"><div id="set-active-project-text"><a href="/Project">Please set Active Project</a></div></div>
+        <div class="row-fluid">
+            <div id="errorPanel" class="alert alert-error error-panel">
+                <button class="close" type="button">×</button>
+                <ul></ul>
+            </div>
+            <div class="alert alert-success info-panel">
+                <button type="button" class="close">×</button>
+                <ul></ul>
+            </div>
+            <div class="loading-panel">
+                <div class="k-loading-image"></div>
+                <div class="loading-status" id="loading-message">Loading....</div>
+            </div>
+            
+<script src="/Scripts/pages/document.js"></script>
+<script src="/Scripts/pages/project.js"></script>
+
+
+<style>
+    #PageNumberPreview {
+        display: block;
+        height: 400px;
+        min-width: 300px;
+        background-color: #f7f7f7;
+        border: solid 1px black;
+        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+        position: relative;
+    }
+
+    #lblDisplayText {
+        width: 100%;
+        position: absolute;
+    }
+
+    .small-textbox {
+        width: 40px;
+    }
+</style>
+<form action="/Project/Edit" enctype="multipart/form-data" id="proform" method="post" onsubmit="uploadHandler(this, {onsuccess:function onSuccess(ajaxContext){defaultResponse.successHandler(ajaxContext, 'proform', 'errorPanel', ProjectClient.OnSuccessed)}, oncomplete:function(){} })" novalidate="novalidate" target="f_proform"><input name="__RequestVerificationToken" type="hidden" value="knQ42vblOLAP5Kf7O6mrEnLYSyJkdKmy39_CXZ2KSQOcgn70ZuNbGDPrsjPFVvr0MGtpbpdBIknl1gMDEmetpwmc66KojDBYe5YUmQ_NipI1"><input data-val="true" data-val-number="The field ProjectId must be a number." id="ProjectId" name="ProjectId" type="hidden" value=""><input data-val="true" data-val-number="The field ActiveProjectId must be a number." id="ActiveProjectId" name="ActiveProjectId" type="hidden" value=""><input id="ActiveSupplierId" name="ActiveSupplierId" type="hidden" value="00000000-0000-0000-0000-000000000000"><input id="DocumentTypes" name="DocumentTypes" type="hidden" value="">    <div class="controls left">
+        <div class="span2">
+            <label for="ProjectNo">Project No.</label><span class="required">*</span>
+            <input class="span12 focus clearable valid" data-val="true" data-val-required="The Project No. field is required." id="ProjectNo" maxlength="30" name="ProjectNo" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="ProjectNo" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span2">
+            <label for="ProductName">Project Name</label>
+            <input class="span12  clearable valid" id="ProductName" maxlength="256" name="ProductName" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="ProductName" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span2">
+            <label for="UnitNo">Serial No.</label>
+            <input class="span12 clearable valid" id="UnitNo" maxlength="100" name="UnitNo" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="UnitNo" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span2">
+            <label for="OrderNo">Purchase Order No.</label>
+            <input class="span12 clearable valid" id="OrderNo" maxlength="128" name="OrderNo" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="OrderNo" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="controls">
+        <div class="span2">
+            <label for="ClientName">Client</label>
+            <input class="span12  clearable valid" id="ClientName" maxlength="256" name="ClientName" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="ClientName" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span2">
+            <label for="DeliveryDate">Delivery date</label>
+            <span class="k-widget k-datepicker k-header" style="width: 100%;"><span class="k-picker-wrap k-state-default"><input data-role="datepicker" name="DeliveryDate" id="DeliveryDate" data-format="dd.MM.yyyy" style="width:100%;" type="text" class="k-input clearable valid" role="combobox" aria-expanded="false" aria-owns="DeliveryDate_dateview" aria-disabled="false" aria-readonly="false"><span unselectable="on" class="k-select" role="button" aria-controls="DeliveryDate_dateview"><span unselectable="on" class="k-icon k-i-calendar">select</span></span></span></span>
+            <span class="field-validation-valid" data-valmsg-for="DeliveryDate" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span2">
+            <label for="MRBSecurePassword">Secure MRB password</label>
+            <input class="span12  clearable valid" id="MRBSecurePassword" maxlength="256" name="MRBSecurePassword" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="MRBSecurePassword" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span2" id="BOMCombobox">
+            <label for="BoM_template" id="BOMTemplate">BoM template</label>
+
+        </div>
+    </div>
+    <div class="controls">
+        <label for="FabricationSpec">Fabrication Specification</label>
+        <textarea class="span12 clearable" cols="20" id="FabricationSpec" name="FabricationSpec" rows="2"></textarea>
+        <span class="field-validation-valid" data-valmsg-for="FabricationSpec" data-valmsg-replace="true"></span>
+    </div>
+    <div class="controls margin-bottom-10">
+        <div class="span4">
+            <label for="ApprovalText">Setting for top approval text</label>
+            <textarea class="span12  clearable valid" cols="20" id="ApprovalText" maxlength="1000" name="ApprovalText" rows="2" style="resize:vertical"></textarea>
+            <span class="field-validation-valid" data-valmsg-for="ApprovalText" data-valmsg-replace="true"></span>
+        </div>
+        <div class="span4">
+            <label for="EnableSignatureApproval">&nbsp;</label> <br>
+            <input class="k-checkbox" id="enableSignatureApproval" name="enableSignatureApproval" type="checkbox" value="true"><label class="k-checkbox-label" for="enableSignatureApproval">Insert signature image for approved documents when generating MRB</label><input name="enableSignatureApproval" type="hidden" value="false">
+        </div>
+        <div class="span4">
+            <label for="EnableSignatureApproval">&nbsp;</label> <br>
+            <input class="k-checkbox" id="includeSupplierInfoToMRB" name="includeSupplierInfoToMRB" type="checkbox" value="true"><label class="k-checkbox-label" for="includeSupplierInfoToMRB">Include supplier information into generated MRB?</label><input name="includeSupplierInfoToMRB" type="hidden" value="false">
+        </div>
+    </div>
+    <div class="clear-all headline margin-top-10">
+        <h4 data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" style="cursor:pointer;"><a>MRB Page Number Setting</a></h4>
+    </div>
+    <div class="collapse" id="collapseExample">
+        <div class="controls margin-bottom-10">
+            <div class="span3">
+                <label for="EnableSignatureApproval">&nbsp;</label> <br>
+                <input checked="checked" class="k-checkbox valid" data-val="true" data-val-required="The Display Page Number in MRB? field is required." id="PageNumberSettingModel_DisplayPageNumber" name="PageNumberSettingModel.DisplayPageNumber" type="checkbox" value="true"><label class="k-checkbox-label" for="PageNumberSettingModel_DisplayPageNumber">Display Page Number in MRB?</label><input name="PageNumberSettingModel.DisplayPageNumber" type="hidden" value="false">
+            </div>
+        </div>
+
+        <div class="margin-bottom-10"></div>
+        <div class="controls margin-bottom-10">
+            <div class="span3">
+                <label for="PageNumberSettingModel_DisplayText">Display Text</label>
+                <input class="span12 clearable" id="PageNumberSettingModel_DisplayText" name="PageNumberSettingModel.DisplayText" type="text" value="Page [PageNo] of [TotalPage]">
+            </div>
+            <div class="span2">
+                <label for="PageNumberSettingModel_FontName">Font Name</label> <br>
+                <span class="k-widget k-combobox k-header none-save clearable" style="width: 100%;"><span tabindex="-1" unselectable="on" class="k-dropdown-wrap k-state-default"><input name="PageNumberSettingModel.FontName_input" class="k-input none-save clearable" type="text" autocomplete="off" role="combobox" aria-expanded="false" placeholder="Select font" tabindex="0" aria-disabled="false" aria-readonly="false" aria-autocomplete="list" aria-owns="PageNumberSettingModel_FontName_listbox" aria-busy="false" aria-activedescendant="df00d570-59e0-4a27-8407-14b2e44a78bc" style="width: 100%;"><span tabindex="-1" unselectable="on" class="k-select"><span unselectable="on" class="k-icon k-i-arrow-s" role="button" tabindex="-1" aria-controls="PageNumberSettingModel_FontName_listbox">select</span></span></span><input class="none-save clearable" id="PageNumberSettingModel_FontName" name="PageNumberSettingModel.FontName" style="width: 100%; display: none;" type="text" value="Courier" data-role="combobox" aria-disabled="false" aria-readonly="false"></span><script>
+	jQuery(function(){jQuery("#PageNumberSettingModel_FontName").kendoComboBox({"change":PreviewDisplayText,"dataSource":["Courier","Courier-Bold","Courier-BoldOblique","Courier-Oblique","Times","Times-Bold","Times-BoldItalic","Times-Italic","Times-Roman","Helvetica","Helvetica-Bold","Helvetica-BoldOblique","Helvetica-Oblique","Symbol","ZapfDingbats"],"filter":"contains","valuePrimitive":true,"autoBind":true,"placeholder":"Select font"});});
+</script>
+            </div>
+            <div class="span2 hide">
+                <label for="EnableSignatureApproval">Style</label> <br>
+                <input id="PageNumberSettingModel_Bold" name="PageNumberSettingModel.Bold" type="hidden" value="false">
+                <input id="PageNumberSettingModel_Underline" name="PageNumberSettingModel.Underline" type="hidden" value="">
+                <input id="PageNumberSettingModel_Italic" name="PageNumberSettingModel.Italic" type="hidden" value="false">
+                <a id="btnBold" class="StyleButton btn btn-default " style="font-weight:bolder; cursor: pointer; font-size:16px">B</a>
+                <a id="btnItalic" class="StyleButton btn btn-default " style="font-style:italic; cursor: pointer; font-size:16px;font-family: auto;">I</a>
+                <a id="btnUnderline" class="StyleButton btn btn-default " style="text-decoration:underline; cursor: pointer;  font-size:16px">U</a>
+            </div>
+            <div class="span2">
+                <label for="PageNumberSettingModel_FontSize">Font Size</label>
+                <input class="span12 valid" data-val="true" data-val-number="The field Font Size must be a number." data-val-required="The Font Size field is required." id="PageNumberSettingModel_FontSize" name="PageNumberSettingModel.FontSize" step="any" type="number" value="10">
+            </div>
+            <div class="span2">
+                <label for="PageNumberSettingModel_Color">Color</label> <br>
+                <input class="k-input valid" id="PageNumberSettingModel_Color" name="PageNumberSettingModel.Color" type="color" value="#0000FF">
+            </div>
+        </div>
+        <div class="margin-bottom-10"></div>
+        <div class="controls margin-bottom-10">
+            <div class="span2">
+                l
+                <label for="PageNumberSettingModel_PositionType">Position</label>
+                    <div>
+                        <input data-val="true" data-val-required="The Position field is required." id="rdbtn_eMRB_Domain_Enum_PositionType_MIDDLE_CENTER" name="PageNumberSettingModel.PositionType" type="radio" value="MIDDLE_CENTER" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_MIDDLE_CENTER">Middle - Center</label>
+
+                    </div>
+                    <div>
+                        <input id="rdbtn_eMRB_Domain_Enum_PositionType_TOP_LEFT" name="PageNumberSettingModel.PositionType" type="radio" value="TOP_LEFT" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_TOP_LEFT">Top - Left</label>
+
+                    </div>
+                    <div>
+                        <input id="rdbtn_eMRB_Domain_Enum_PositionType_TOP_CENTER" name="PageNumberSettingModel.PositionType" type="radio" value="TOP_CENTER" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_TOP_CENTER">Top - Center</label>
+
+                    </div>
+                    <div>
+                        <input id="rdbtn_eMRB_Domain_Enum_PositionType_TOP_RIGHT" name="PageNumberSettingModel.PositionType" type="radio" value="TOP_RIGHT" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_TOP_RIGHT">Top - Right</label>
+
+                    </div>
+                    <div>
+                        <input id="rdbtn_eMRB_Domain_Enum_PositionType_BOTTOM_LEFT" name="PageNumberSettingModel.PositionType" type="radio" value="BOTTOM_LEFT" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_BOTTOM_LEFT">Bottom - Left</label>
+
+                    </div>
+                    <div>
+                        <input checked="checked" id="rdbtn_eMRB_Domain_Enum_PositionType_BOTTOM_CENTER" name="PageNumberSettingModel.PositionType" type="radio" value="BOTTOM_CENTER" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_BOTTOM_CENTER"><input class="small-textbox valid" data-val="true" data-val-number="The field PositionY must be a number." id="PageNumberSettingModel_PositionY" name="PageNumberSettingModel.PositionY" step="1" type="number" value="10">Bottom - Center<input class="small-textbox" data-val="true" data-val-number="The field PositionX must be a number." id="PageNumberSettingModel_PositionX" name="PageNumberSettingModel.PositionX" step="1" type="number" value="-1" style="display: none;"></label>
+
+                    </div>
+                    <div>
+                        <input id="rdbtn_eMRB_Domain_Enum_PositionType_BOTTOM_RIGHT" name="PageNumberSettingModel.PositionType" type="radio" value="BOTTOM_RIGHT" class="valid">
+
+
+                        <label for="rdbtn_eMRB_Domain_Enum_PositionType_BOTTOM_RIGHT">Bottom - Right</label>
+
+                    </div>
+            </div>
+            <div class="span6">
+                <div id="PageNumberPreview">
+                    <span id="lblDisplayText" class="" style="color: rgb(0, 0, 255); font-size: 10px; font-family: Courier; text-align: center; bottom: 10px;">Page 1 of 10</span>
+                </div>
+            </div>
+            <div class="span2">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="margin-bottom-20"></div>
+    <div class="clear-all headline margin-top-10">
+        <h4>Suppliers</h4>
+    </div>
+    <div class="margin-bottom-20">
+        <div class="k-header k-grid-toolbar k-grid-top">
+            <a class="emrb-button-main k-button k-button-icontext" onclick="ProjectClient.OpenSelectSupplierDialog('Select Suppliers');" style="background: rgb(88, 88, 91); color: rgb(255, 255, 255); border: none; display: none;" href="javascript:void(0)" id="btnAddSupplier" title="Add supplier to project"><span></span>Select Suppliers</a>
+        </div>
+
+        <div class="k-widget k-grid" id="selectedSupplierGrid" data-role="grid"><div class="k-loading-mask" style="width: 100%; height: 100%; top: 0px; left: 0px;"><span class="k-loading-text">Loading...</span><div class="k-loading-image"></div><div class="k-loading-color"></div></div><table role="grid"><colgroup><col><col style="width:100px"></colgroup><thead class="k-grid-header" role="rowgroup"><tr role="row"><th class="k-header" data-field="SupplierName" data-index="0" data-title="Supplier Name" scope="col" data-role="columnsorter"><a class="k-link" href="/Project/GetSuppliers?selectedSupplierGrid-sort=SupplierName-asc">Supplier Name</a></th><th class="k-header" data-index="1" scope="col"><span class="k-link">&nbsp;</span></th></tr></thead><tbody role="rowgroup"><tr class="k-no-data"><td colspan="2"></td></tr></tbody></table></div><script>
+	jQuery(function(){jQuery("#selectedSupplierGrid").kendoGrid({"columns":[{"title":"Supplier Name","field":"SupplierName","encoded":true,"editor":"\u003cinput class=\"text-box\u0026#32;single-line\" id=\"SupplierName\" name=\"SupplierName\" type=\"text\" value=\"\" /\u003e\u003cspan class=\"field-validation-valid\" data-valmsg-for=\"SupplierName\" data-valmsg-replace=\"true\"\u003e\u003c/span\u003e"},{"width":"100px","command":[{"name":"destroy","attr":" title=\"Delete\u0026#32;generated\u0026#32;document\"","buttonType":"ImageAndText","text":"Delete"}]}],"sortable":true,"scrollable":false,"editable":{"confirmation":"Are you sure you want to delete this record?","confirmDelete":"Delete","cancelDelete":"Cancel","mode":"inline","create":true,"update":true,"destroy":true},"messages":{"noRecords":"No records available."},"dataSource":{"type":(function(){if(kendo.data.transports['aspnetmvc-ajax']){return 'aspnetmvc-ajax';} else{throw new Error('The kendo.aspnetmvc.min.js script is not included.');}})(),"transport":{"read":{"url":"/Project/GetSuppliers","data":collectAdditionalData,"type":"GET"},"prefix":"","destroy":{"url":"/Project/RemoveSelectedSupplier"}},"pageSize":32767,"page":1,"total":0,"schema":{"data":"Data","total":"Total","errors":"Errors","model":{"id":"Id","fields":{"Id":{"type":"number"},"ProjectId":{"type":"number"},"ProjectNo":{"type":"string"},"SupplierId":{"type":"string","defaultValue":null},"SupplierName":{"type":"string"},"SupplierIsActive":{"type":"boolean"},"Description":{"type":"string"},"CreationBy":{"type":"string","defaultValue":null},"CreationDate":{"type":"date","defaultValue":null},"MaterialTraceabilityDocId":{"type":"number","defaultValue":null},"PurchaseOrderDocId":{"type":"number","defaultValue":null},"MaterialTraceabilityFileName":{"type":"string"},"PurchaseOrderFileName":{"type":"string"},"SupplierFullAddress":{"editable":false,"type":"string"},"Website":{"type":"string"},"Email":{"type":"string"},"Fax":{"type":"string"},"Tel":{"type":"string"},"Address":{"type":"string"}}}}}});});
+</script>
+    </div>
+    <div>
+        <button type="submit" class="btn-u" title="Save this project">Save</button>
+            <a class="btn-u" id="openPermission" onclick="ProjectClient.openPermission()" title="Set project permission" style="display: none;">Permissions</a>
+        <a class="btn-u backto" onclick="ProjectClient.Back();" title="Back to previous page">Back to</a>
+    </div>
+</form>
+<style type="text/css">
+    #BOMCombobox {
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+    var canDeleteAndRecover, delayTime;
+    var expand = false;
+    var projectId = '0';
+    var inactiveIcon = "/Content/img/common/grid/icon-inactive.png";
+    var setActiveIcon = "/Content/img/new-icons/setactivepj.png";
+    var firstLoad = true;
+
+    function PreviewDisplayText() {
+        var fontFamily = $("#PageNumberSettingModel_FontName").data('kendoComboBox').value();
+
+        $("#PageNumberSettingModel_Bold").val(fontFamily.indexOf("Bold") > 0);
+        var isItalic = fontFamily.indexOf("Italic") > 0 || fontFamily.indexOf("Oblique") > 0;
+        $("#PageNumberSettingModel_Italic").val(isItalic);
+
+        ShowHidePreview();
+        ShowPositionXY();
+        ShowStyle();
+
+        var displayText = $("#PageNumberSettingModel_DisplayText").val().replace("[PageNo]", "1").replace("[TotalPage]", "10");
+        var color = $("#PageNumberSettingModel_Color").val();
+        var size = $("#PageNumberSettingModel_FontSize").val();
+        var positionType = $("input[name='PageNumberSettingModel.PositionType']:checked").val();
+
+        $("#lblDisplayText").html(displayText);
+        $("#lblDisplayText").css("color", color);
+        $("#lblDisplayText").css("font-size", size + "px");
+
+        var displayFont = fontFamily.indexOf("-") > 0 ? fontFamily.substring(0, fontFamily.indexOf("-")) : fontFamily;
+        $("#lblDisplayText").css("font-family", displayFont);
+
+        var horizontalAlign = "left";
+        var offsetX = $("#PageNumberSettingModel_PositionX").val() + "px";
+        if (positionType.indexOf("CENTER") > -1) {
+            horizontalAlign = "center";
+        } else if (positionType.indexOf("RIGHT") > -1) {
+            horizontalAlign = "right";
+        }
+        $("#lblDisplayText").css({ "left": "" }).css({ "right": "" });
+        $("#lblDisplayText").css("text-align", horizontalAlign);
+        $("#lblDisplayText").css(horizontalAlign, offsetX);
+
+        var verticalAlign = "top";
+        var offsetY = $("#PageNumberSettingModel_PositionY").val() + "px";
+        if (positionType.indexOf("MIDDLE") > -1) {
+            offsetY = "50%";
+        } else if (positionType.indexOf("BOTTOM") > -1) {
+            verticalAlign = "bottom"; //TODO get from textbox
+        }
+        $("#lblDisplayText").css({ "top": "" }).css({ "bottom": "" }); //remove top, bottom and set it again
+        $("#lblDisplayText").css(verticalAlign, offsetY);
+    }
+
+    function collectAdditionalData() {
+        return { projectId: $("#ProjectId").val() };
+    }
+
+    kendo.init($("input"));
+    function ShowPositionXY() {
+        var positionType = $("input[name='PageNumberSettingModel.PositionType']:checked").val();
+        var id = $("input[name='PageNumberSettingModel.PositionType']:checked").attr('id');
+        $("#PageNumberSettingModel_PositionX").show();
+        $("#PageNumberSettingModel_PositionY").show();
+
+        $("#PageNumberSettingModel_PositionX").appendTo($("label[for='" + id + "']"));
+        $("#PageNumberSettingModel_PositionY").prependTo($("label[for='" + id + "']"));
+
+        if (positionType.indexOf("MIDDLE") > -1) {
+            $("#PageNumberSettingModel_PositionY").hide();
+        }
+
+        if (positionType.indexOf("CENTER") > -1) {
+            $("#PageNumberSettingModel_PositionX").hide();
+        }
+    }
+
+    function ShowHidePreview() {
+        var isDisplay = $("#PageNumberSettingModel_DisplayPageNumber").is(":checked");
+
+        if (isDisplay) {
+            $("#lblDisplayText").removeClass("hide");
+        }
+        else {
+            $("#lblDisplayText").addClass("hide");
+        }
+    }
+
+    function ShowStyle() {
+        var isBold = $("#PageNumberSettingModel_Bold").val().toLowerCase() == "true";
+        var isItalic = $("#PageNumberSettingModel_Italic").val().toLowerCase() == "true";
+        var isUnderline = $("#PageNumberSettingModel_Underline").val().toLowerCase() == "true";
+
+        $("#lblDisplayText")
+            .css({ "font-weight": isBold ? "bold" : "" })
+            .css({ "font-style": isItalic ? "italic" : "" })
+            .css({ "text-decoration": isUnderline ? "underline" : "" });
+    }
+
+    $(document).ready(function () {
+        $("#ActiveSupplierId").val('00000000-0000-0000-0000-000000000000');
+        ProjectClient.Init();
+
+        ComboboxOpen("TopDrawingId");
+        ComboboxOpen("MachineTypeId");
+
+        if ($("#ProjectId").val() == "") {
+            $("#btnAddSupplier").hide();
+
+        }
+
+        AjaxUploadForm.BindingAsynAction($('#proform'));
+        $('#proform').submit(function () {
+            ProjectClient.CollectDocumentTypes();
+        });
+
+        PreviewDisplayText();
+
+        $("#PageNumberSettingModel_DisplayPageNumber").click(function () {
+            PreviewDisplayText();
+        });
+
+        $(".StyleButton").click(function () {
+            id = this.id;
+            var isActive = $(this).hasClass("active");
+
+            if (isActive) {
+                $(this).removeClass("active");
+            }
+            else {
+                $(this).addClass("active");
+            }
+
+            if (id == "btnBold") {
+                $("#PageNumberSettingModel_Bold").val(!isActive);
+            }
+
+            if (id == "btnItalic") {
+                $("#PageNumberSettingModel_Italic").val(!isActive);
+            }
+
+            if (id == "btnUnderline") {
+                $("#PageNumberSettingModel_Underline").val(!isActive);
+            }
+
+            PreviewDisplayText();
+        });
+
+        $("input[name='PageNumberSettingModel.PositionType']").click(function () {
+            PreviewDisplayText();
+        });
+
+        $('#PageNumberSettingModel_DisplayText, #PageNumberSettingModel_FontSize, #PageNumberSettingModel_Color,#PageNumberSettingModel_PositionX, #PageNumberSettingModel_PositionY').change(function () {
+            PreviewDisplayText();
+        });
+
+    });
+
+    function OnLoadingDataSucceeded() {
+        ProjectClient.SelectDocumentTypes("");
+    };
+
+    function openProjectInfo(id) {
+        window.location.href = GetURLAppIIS("Project","/Edit?projectId=" + id);
+    };
+</script>
+
+        </div>
+    </div><div aria-hidden="true" class="k-calendar-container k-popup k-group k-reset" id="DeliveryDate_dateview" data-role="popup" style="display: none; position: absolute;"></div>
+
+    <div class="copyright">
+        <iframe src="about:blank" scrolling="no" style="border: currentColor; border-image: none; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: 1;"></iframe>
+        <div class="container  main-content" style="position: relative; z-index: 99999;">
+            <div class="row-fluid">
+                <div class="span8">
+                    <p>
+                        eMRB<sup>®</sup> v1.3.1.1187 © Copyright CodeIT AS 2021.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<style>
+    #red-color-template {
+        background: #EC3825;
+        color: #EC3825;
+    }
+
+    #blue-color-template {
+        background: #08A6AC;
+        color: #08A6AC;
+    }
+
+    #logo-header {
+        height: auto;
+    }
+
+    .copyright > a {
+        color: #fff !important;
+    }
+
+    .ui-widget-overlay {
+        position: fixed !important; /* Sit on top of the page content */
+        width: 100% !important; /* Full width (cover the whole page) */
+        height: 100% !important; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#red-color-template").click(function () {
+            $("link[href='/Content/css/emrb-custom-blue-red-style.css']").removeAttr("href").attr("href", "/Content/css/emrb-custom-red-style.css");
+        });
+
+        $("#blue-color-template").click(function () {
+
+            $("link[href='/Content/css/emrb-custom-red-style.css']").removeAttr("href").attr("href", "/Content/css/emrb-custom-blue-red-style.css");
+        });
+    });
+
+    function CheckActiveProjectToDisablePage() {
+        var controller = "project";
+        console.log(controller);
+        if (controller != "project") {
+            var activeProjectId = $("#uxActiveProjectId").val();
+            setTimeout(function () {
+                if (activeProjectId === 0 || activeProjectId === "0" || activeProjectId == "") {
+                    $(".main-content").css("position", "relative");
+                    $(".centeredOverlay").show();
+                }
+                else {
+                    $(".main-content").css("position", "");
+                    $(".centeredOverlay").hide();
+                }
+            }, 500);
+        }
+    }
+</script><div class="k-list-container k-popup k-group k-reset" id="PageNumberSettingModel_FontName-list" data-role="popup" style="position: absolute; height: 200px; display: none;"><div class="k-static-header" style="display:none"></div><ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="PageNumberSettingModel_FontName_listbox" aria-live="polite" data-role="staticlist" role="listbox" style="overflow: auto; height: 197.136px;"><li tabindex="-1" role="option" unselectable="on" class="k-item k-state-focused k-state-selected" data-index="0" id="df00d570-59e0-4a27-8407-14b2e44a78bc" aria-selected="true">Courier</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="1">Courier-Bold</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="2">Courier-BoldOblique</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="3">Courier-Oblique</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="4">Times</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="5">Times-Bold</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="6">Times-BoldItalic</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="7">Times-Italic</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="8">Times-Roman</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="9">Helvetica</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="10">Helvetica-Bold</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="11">Helvetica-BoldOblique</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="12">Helvetica-Oblique</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="13">Symbol</li><li tabindex="-1" role="option" unselectable="on" class="k-item" data-index="14">ZapfDingbats</li></ul></div><iframe id="f_proform" name="f_proform" style="position:absolute;top:-1000px;left:-1000px"></iframe></body></html>

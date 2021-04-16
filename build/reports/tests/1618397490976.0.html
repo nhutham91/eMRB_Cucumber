@@ -1,0 +1,341 @@
+<html><head>
+    <title>:: eMRB - Login ::</title>
+    <link href="/Content/img/common/toolbar_icon.png" id="favicon" rel="shortcut icon" type="image/x-icon">
+    <script src="/Scripts/jquery-1.8.0.min.js" type="text/javascript"></script>
+    
+    
+
+    
+    
+    
+
+    <link href="/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    
+
+    <link href="/Content/css/style.min.css" rel="stylesheet" type="text/css">
+    
+    
+    
+    
+
+    
+    
+    
+    <link href="/Content/css/common.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+</head>
+<body class="emrb-login-background">
+    <div id="cookie-consent" style="display: none;">
+        <div style="margin:0 70px">
+            <span style="color: #eeeeee;">We use cookies to collect information on your interaction with our website and combine this with the data you provide us to build a profile so we can show you content tailored to your interests. By accepting, you allow us to collect and process your personal information as <a href="/PrivacyPolicy/">described here.</a></span>
+            <button class="btn btn-xs btn-green" id="consent">Accept</button> <button class="btn btn-xs btn-green" id="learn-more">No, Thanks</button>
+        </div>
+    </div>
+    <div class="top">
+        <div class="container">
+        </div>
+    </div>
+    <div class=" margin-bottom-20"></div>
+    <div class="container  margin-bottom-20">
+        <div class="row-fluid">
+
+            
+
+<form action="/Account/LogIn" class="log-page" method="post">    <div class="controls">
+        <div class="span10 login-img ">
+            <img style="width:90px; height:95px;" src="/Content/img/eMRB-newTemplate/eMRB_icon-min.png">
+        </div>
+        <div class="span12" style="text-align: center; margin-top: 10px; margin-left: 0px !important;">
+            <div class="emrb-welcome margin-bottom-20">
+                Welcome to <span class="emrb-font-eightone">eMRB</span><sup style="font-size:65%;">®</sup>
+            </div>
+            <div class="alert alert-error error-panel">
+                <button data-dismiss="alert" class="close" type="button">×</button>
+                <h4><div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div></h4>
+            </div>
+            <div class=" margin-bottom-20"></div>
+            <div class="input-prepend">
+                <input class="emrb-textbox-login text-line " id="UserName" name="UserName" placeholder="User Name" type="text" value="">
+                <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="false">User Name is incorrect.</span>
+            </div>
+            <div class="input-prepend">
+                <input autocomplete="new-password" class="emrb-textbox-login text-line " id="Password" name="Password" placeholder="Password" type="password">
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="false">Password is incorrect.</span>
+            </div>
+
+            <div class="controls form-inline">
+                <input type="submit" style="font-size: 14px!important;" value="Login" class="btn-u emrb-login-button">
+            </div>
+
+                <!-- If the user is not authenticated, display the sign-in button -->
+                <a href="/Account/SignIn" style="text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="300px" height="50px" viewBox="0 0 3278 522" class="SignInButton">
+                    <style type="text/css">
+
+                        .fil0:hover {
+                            fill: #737373 !important;
+                        }
+
+                        .fil0 {
+                            fill: #858484 !important;
+                        }
+
+                        .fnt0 {
+                            font-size: 150px;
+                            text-decoration: none;
+                            padding-top: 10px;
+                        }
+
+                        .log-page {
+                            height: 450px !important;
+                        }
+</style>
+                    <rect class="fil0" x="224" y="100" width="2850" height="400" fill="black"></rect>
+
+
+
+
+
+
+
+                    <rect x="800" y="220" width="60" height="60" fill="#F35325"></rect>
+
+
+
+
+
+
+
+                    <rect x="880" y="220" width="60" height="60" fill="#81BC06"></rect>
+
+
+
+
+
+
+
+                    <rect x="800" y="300" width="60" height="60" fill="#05A6F0"></rect>
+
+
+
+
+
+
+
+                    <rect x="880" y="300" width="60" height="60" fill="#FFBA08"></rect>
+
+
+
+
+
+
+
+                    <text x="1000" y="357" fill="white" class="fnt0">Login with Microsoft</text>
+        </svg>
+                </a>
+            <br>
+            <br>
+            <div style="font-size:8pt; margin:0 70px">
+                This website uses cookies. If you do not want to accept cookies, you will not be able to login to the website.
+            </div>
+        </div>
+    </div>
+</form><div class="span12 margin-top-20" style="text-align:center; margin-left:0px!important;">
+    <p class="emrb-copyright">
+        eMRB<sup>®</sup> v1.3.1.1182 © Copyright CodeIT AS 2021.
+    </p>
+</div>
+<div class="controls">
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        if ('False' == 'True') {
+            var time = 6;
+            interval = setInterval(function () {
+                time--;
+                document.getElementById('Label1').innerHTML = "" + time + " seconds"
+                if (time == 0) {
+                    // stop timer
+                    clearInterval(interval);
+                    // click
+                    document.getElementById('clickSignOut').click();
+                }
+            }, 1000);
+        }
+
+        if ($('div.validation-summary-errors').length > 0) {
+            $('.field-validation-error').hide();
+            if ($("#UserName").val() == "") {
+                $('.error-panel').html("Enter valid user name and password.");
+                $('.error-panel').show();
+
+                $("input#UserName.emrb-textbox-login.text-line").attr("style", "border-bottom: solid red 1px !important;");
+                $("input#Password.emrb-textbox-login.text-line").attr("style", "border-bottom: solid red 1px !important;");
+            }
+            else {
+                if ($('.validation-summary-errors > ul >li').html() == "Enter valid user name and password.") {
+                    $("input#UserName.emrb-textbox-login.text-line").attr("style", "border-bottom: solid red 1px !important;");
+                    $("input#Password.emrb-textbox-login.text-line").attr("style", "border-bottom: solid red 1px !important;");
+                }
+                else {
+                    $("input#UserName.emrb-textbox-login.text-line").attr("style", "border-bottom: solid #eeeee 1px !important;");
+                    $("input#Password.emrb-textbox-login.text-line").attr("style", "border-bottom: solid red 1px !important;");
+                }
+                $('.error-panel').show();
+            }
+            $('.log-page').attr('style', 'background-color:#1a1b1b;background-size:100%;border:none;box-shadow:none;margin-top:12%;padding:20px;width:450px; height:450px');
+        }
+        $('#UserName').focus();
+
+    });
+</script>
+
+<style>
+    .field-validation-error .validation-summary-errors > ul {
+        color: #ff5252 !important;
+    }
+
+    .alert .validation-summary-errors {
+        font-weight: normal !important;
+        text-shadow: none !important;
+        color: #ff5252 !important;
+        text-transform: none !important;
+    }
+
+
+    div.validation-summary-errors ul li {
+        font-weight: normal !important;
+        text-shadow: none !important;
+        color: #ff5252 !important;
+        font-size: 11px !important;
+        text-align: center;
+    }
+
+    .alert-danger, .alert-error {
+        color: #ff5252;
+        font-size: 11px;
+        text-align: left !important;
+        /*margin-left: 75px;*/
+        font-weight: lighter !important;
+        text-shadow: none !important;
+        background-color: #1a1b1b !important;
+        border-color: #1a1b1b;
+        padding: 8px 10px 8px 10px;
+        margin-bottom: 5px;
+    }
+
+    .text-line {
+        background-color: transparent !important;
+        color: #eeeeee !important;
+        outline: none !important;
+        outline-style: none !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: solid #eeeeee 1px !important;
+        padding: 3px 10px !important;
+        webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    input.text-line:focus {
+        background-color: transparent !important;
+        color: #eeeeee !important;
+        outline: none !important;
+        outline-style: none !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: solid #eeeeee 1px !important;
+        padding: 3px 10px !important;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(82,168,236,0.6) !important;
+    }
+
+    button.close {
+        display: none;
+    }
+</style>
+
+        </div>
+    </div>
+
+
+
+
+<style>
+    #cookie-consent {
+        background-color: #464646;
+        padding: 20px 20px;
+        display: block;
+        margin: -19px;
+    }
+
+    .btn-green {
+        background-color: #9d9d9d;
+        margin-right: 20px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        //eraseCookie("AcceptCookie");
+        //document.cookie = "AcceptCookie=no";
+
+        var myCookie = readCookie("AcceptCookie");
+
+        if (myCookie == null || myCookie=="no") {
+            $('#cookie-consent').slideDown('slow');
+        }
+
+        $('#consent').on('click', function () {
+            eraseCookie("AcceptCookie");
+            document.cookie = "AcceptCookie=yes; max-age=31536000; path=/;";
+            $('#cookie-consent').slideUp('slow');
+        });
+
+        $('#learn-more').on('click', function () {
+            eraseCookie("AcceptCookie");
+            $('#cookie-consent').slideUp('slow');
+        });
+
+
+    });
+
+    function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = ";max-age=0";
+        } else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return c.substring(nameEQ.length, c.length);
+            }
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+</script></body></html>
