@@ -23,6 +23,8 @@ public class ProjectSteps {
     @When("I search {string}")
     public void i_search(String projectNo) {
         projectPage.search(projectNo);
+        Account user = (Account) testContext.scenarioContext.getContext("User Account");
+        System.out.println("Account user " + user.getUsername());
     }
 
     @When("click Delete icon on that project {string}")

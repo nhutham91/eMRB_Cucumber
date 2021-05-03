@@ -30,6 +30,7 @@ public class LoginSteps{
     public void i_enter_username_and_password(String username, String password) {
         Account user = new Account(username, password);
         loginPage.enterUserNamePassword(username, password);
+        testContext.scenarioContext.setContext("User Account", user);
     }
 
     @When("I click login")

@@ -8,7 +8,6 @@ public class PageManager {
     private LoginPage loginPage;
     private ProjectInfoPage projectInfoPage;
     private ProjectPage projectPage;
-    private WebDriverRunner webDriverRunner;
 
     public PageManager(){
         //this.webDriverRunner = webDriverRunner;
