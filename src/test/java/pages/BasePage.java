@@ -32,7 +32,6 @@ public class BasePage {
         int separateIndex = menuItem.lastIndexOf("->");
         String menu = menuItem.substring(0, separateIndex);
         String item = menuItem.substring(separateIndex + 2);
-        System.out.print(menu + " " + item);
         menu_bar.get(menu).click();
         menu_bar.get(item).click();
         loading_mask.shouldNot(Condition.exist, AppConfig.AJAXTIMEOUT);

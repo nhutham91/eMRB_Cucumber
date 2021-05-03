@@ -1,5 +1,7 @@
 package stepsdef;
 
+import businessobjects.Account;
+import cucumber.TestContext;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -8,6 +10,11 @@ import pages.ProjectPage;
 public class ProjectSteps {
 
     ProjectPage projectPage = new ProjectPage();
+    TestContext testContext;
+
+    public ProjectSteps(TestContext testContext) {
+        this.testContext = testContext;
+    }
 
     @When("I click Add New")
     public void i_click_add_new() {

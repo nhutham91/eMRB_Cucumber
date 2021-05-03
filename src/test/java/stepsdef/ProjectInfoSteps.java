@@ -4,6 +4,7 @@ import businessobjects.Project;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import configuration.AppConfig;
+import cucumber.TestContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,8 +16,14 @@ import java.util.Map;
 
 public class ProjectInfoSteps {
 
+    TestContext testContext;
     Project project;
     ProjectInfoPage projectInfoPage = new ProjectInfoPage();
+
+    public ProjectInfoSteps(TestContext testContext) {
+        this.testContext = testContext;
+        //projectInfoPage = testContext.getPageManager().getProjectInfoPage();
+    }
 
     @When("Enter project info")
     public void enter_project_info(DataTable projectInfoData) {

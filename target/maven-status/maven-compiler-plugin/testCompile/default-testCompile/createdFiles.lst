@@ -4,6 +4,7 @@ pages\BasePage.class
 stepsdef\ProjectInfoSteps.class
 businessobjects\Project.class
 pages\LoginPage.class
+businessobjects\test.class
 configuration\AppConfig.class
 stepsdef\LoginSteps.class
 stepsdef\Hooks.class
